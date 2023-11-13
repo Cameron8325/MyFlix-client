@@ -8,7 +8,7 @@ export const MainView = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
-    fetch("https://camflixcf-73cf2f8e0ca3.herokuapp.com/")
+    fetch("https://camflixcf-73cf2f8e0ca3.herokuapp.com/movies")
       .then((response) => response.json())
       .then((data) => {
         setMovies(data);

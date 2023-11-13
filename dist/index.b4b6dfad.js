@@ -27177,7 +27177,7 @@ const MainView = ()=>{
     const [movies, setMovies] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
-        fetch("https://camflixcf-73cf2f8e0ca3.herokuapp.com/").then((response)=>response.json()).then((data)=>{
+        fetch("https://camflixcf-73cf2f8e0ca3.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
             setMovies(data);
         }).catch((error)=>console.error("Error fetching movies", error));
     }, []);
