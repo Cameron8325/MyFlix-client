@@ -27174,40 +27174,26 @@ var _movieCard = require("../movie-card/movie-card");
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
-    const [movies, setMovies] = (0, _react.useState)([
-        {
-            id: 1,
-            title: "Inception",
-            director: "Christopher Nolan",
-            description: " 'Inception' is a mind-bending science fiction film that explores the concept of entering people's dreams to steal their secrets. Directed by Christopher Nolan, this visually stunning and thought-provoking movie follows a group of thieves who use advanced technology to navigate the subconscious mind. As the lines between reality and dreams blur, the film takes the audience on an exhilarating and thrilling journey."
-        },
-        {
-            id: 2,
-            title: "Pulp Fiction",
-            director: "Quentin Tarantino",
-            description: "'Pulp Fiction,' directed by Quentin Tarantino, is a classic crime drama with a unique narrative structure. The film weaves together interconnected stories of hitmen, a boxer, a gangster's wife, and more, all set in a gritty underworld. Known for its sharp dialogue, memorable characters, and non-linear storytelling, 'Pulp Fiction' has become a cult favorite."
-        },
-        {
-            id: 3,
-            title: "The Shawshank Redemption",
-            director: "Frank Darabont",
-            description: " 'The Shawshank Redemption' is a powerful and touching drama directed by Frank Darabont. The film tells the story of a banker, Andy Dufresne, who is wrongfully convicted of murder and serves a life sentence in Shawshank State Penitentiary. Through friendship and determination, Andy navigates the challenges of prison life while helping his fellow inmates. This tale of hope, resilience, and the enduring human spirit has earned its place as one of the greatest films of all time."
-        }
-    ]);
+    const [movies, setMovies] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
+    (0, _react.useEffect)(()=>{
+        fetch("https://camflixcf-73cf2f8e0ca3.herokuapp.com/").then((response)=>response.json()).then((data)=>{
+            setMovies(data);
+        }).catch((error)=>console.error("Error fetching movies", error));
+    }, []);
     if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
         movie: selectedMovie,
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 32,
+        lineNumber: 22,
         columnNumber: 7
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 37,
+        lineNumber: 27,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27218,16 +27204,16 @@ const MainView = ()=>{
                 }
             }, Movie.id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 43,
+                lineNumber: 33,
                 columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 41,
+        lineNumber: 31,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "comYg3LfarfH/RGDJ3ejAfPO/rI=");
+_s(MainView, "PO+XgOji7E32nFJj3H5UPLPJ7w4=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
