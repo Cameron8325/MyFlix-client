@@ -29,10 +29,10 @@ export const MainView = () => {
 
   return (
     <div>
-      {movies.map((Movie) => (
+      {movies.map((movie) => (
         <MovieCard
-          key={Movie.id}
-          movieData={Movie}
+          key={movie._id}
+          movieData={movie}
           onMovieClick={(newSelectedMovie) => {
             setSelectedMovie(newSelectedMovie);
           }}
