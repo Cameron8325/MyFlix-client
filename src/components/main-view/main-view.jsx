@@ -29,14 +29,13 @@ export const MainView = () => {
 
   return (
     <div>
-      {movies.map((movie) => (
-        <div key={movie._id}>
-          <h2>{movie.Title}</h2>
-          <p>{movie.Description}</p>
-          <img src={movie.ImageUrl} alt={movie.Title} />
-          <button onClick={() => setSelectedMovie(movie)}>View Details</button>
-        </div>
-      ))}
+      <div>
+        {movies.map((movie) => (
+          <div key={movie._id} onClick={() => setSelectedMovie(movie)}>
+            {movie.Title}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
