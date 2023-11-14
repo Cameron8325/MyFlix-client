@@ -29,13 +29,11 @@ export const MainView = () => {
 
   return (
     <div>
-      <div>
         {movies.map((movie) => (
           <div key={movie._id} onClick={() => setSelectedMovie(movie)}>
             {movie.Title}
           </div>
         ))}
-      </div>
     </div>
   );
 };
