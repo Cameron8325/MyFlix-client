@@ -17,6 +17,20 @@ export const MainView = () => {
     })
     .catch((error) => console.error("Error fetching movies", error));
   }, []);
+
+  useEffect(() => {
+    if (!token) {
+      return;
+    }
+
+    fetch("https://myflixmoviedb.herokuapp.com/movies", {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      });
+  }, [token]);
   
   if (!user) {
     return (

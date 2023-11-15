@@ -4,6 +4,7 @@ import { useState } from "react";
 export const LoginView = (onLoggedIn) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -31,6 +32,7 @@ export const LoginView = (onLoggedIn) => {
       .catch((e) => {
         alert("Something went wrong");
       });
+    };
 
   return (
     <form onSubmit={handleSubmit}>
