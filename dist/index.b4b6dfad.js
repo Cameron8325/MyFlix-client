@@ -27234,6 +27234,7 @@ const MainView = ()=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                 onClick: ()=>{
                     setUser(null);
+                    setToken(null);
                 },
                 children: "Logout"
             }, void 0, false, {
