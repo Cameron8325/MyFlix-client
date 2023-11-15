@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { MovieView } from "../movie-view/movie-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { LoginView } from "../login-view/login-view";
+import { SignupView } from "../signup-view/signup-view";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -47,7 +48,11 @@ export const MainView = () => {
 
   if (selectedMovie) {
     return (
+      <>
       <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
+      or
+      <SignupView />
+      </>
     );
   }
 
