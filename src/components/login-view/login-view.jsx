@@ -9,5 +9,5 @@ export const LoginView = () => {
       </label>
       <button type="submit">Submit</button>
     </form>
-  )
-}
+  );
+};
