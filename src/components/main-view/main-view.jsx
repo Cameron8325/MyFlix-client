@@ -38,6 +38,7 @@ export const MainView = () => {
             {movie.Title}
           </div>
         ))}
+        <button onClick={() => { setUser(null); }}>Logout</button>
     </div>
   );
 };
