@@ -25,13 +25,21 @@ export const MainView = () => {
     if (!token) {
       return;
     }
-
-    fetch("https://myflixmoviedb.herokuapp.com/movies", {
+  
+    fetch("https://myflixmoviedb.herokuapp.com/register", {
       headers: { Authorization: `Bearer ${token}` },
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch user data");
+        }
+        return response.json();
+      })
+      .then((userData) => {
+        setUser(userData);
+      })
+      .catch((error) => {
+        console.error("Error fetching user data", error);
       });
   }, [token]);
 
