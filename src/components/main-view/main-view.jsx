@@ -26,15 +26,10 @@ export const MainView = () => {
       return;
     }
   
-    fetch("https://myflixmoviedb.herokuapp.com/register", {
+    fetch("https://camflixcf-73cf2f8e0ca3.herokuapp.com/users", {
       headers: { Authorization: `Bearer ${token}` },
     })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch user data");
-        }
-        return response.json();
-      })
+      .then((response) => response.json())
       .then((userData) => {
         setUser(userData);
       })
