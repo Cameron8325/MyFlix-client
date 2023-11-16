@@ -27189,12 +27189,17 @@ const MainView = ()=>{
     }, []);
     (0, _react.useEffect)(()=>{
         if (!token) return;
-        fetch("https://myflixmoviedb.herokuapp.com/movies", {
+        fetch("https://myflixmoviedb.herokuapp.com/register", {
             headers: {
                 Authorization: `Bearer ${token}`
             }
-        }).then((response)=>response.json()).then((data)=>{
-            console.log(data);
+        }).then((response)=>{
+            if (!response.ok) throw new Error("Failed to fetch user data");
+            return response.json();
+        }).then((userData)=>{
+            setUser(userData);
+        }).catch((error)=>{
+            console.error("Error fetching user data", error);
         });
     }, [
         token
@@ -27208,13 +27213,13 @@ const MainView = ()=>{
                 }
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 41,
+                lineNumber: 49,
                 columnNumber: 9
             }, undefined),
             "or",
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signupView.SignupView), {}, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 48,
+                lineNumber: 56,
                 columnNumber: 9
             }, undefined)
         ]
@@ -27224,14 +27229,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 55,
+        lineNumber: 63,
         columnNumber: 7
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 63,
+        lineNumber: 71,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27241,7 +27246,7 @@ const MainView = ()=>{
                     children: movie.Title
                 }, movie._id, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 69,
+                    lineNumber: 77,
                     columnNumber: 9
                 }, undefined)),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27253,13 +27258,13 @@ const MainView = ()=>{
                 children: "Logout"
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 73,
+                lineNumber: 81,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 67,
+        lineNumber: 75,
         columnNumber: 5
     }, undefined);
 };
@@ -28401,7 +28406,7 @@ const LoginView = (onLoggedIn)=>{
             access: username,
             secret: password
         };
-        fetch("https://camflixcf-73cf2f8e0ca3.herokuapp.com//login", {
+        fetch("https://camflixcf-73cf2f8e0ca3.herokuapp.com/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -28484,7 +28489,7 @@ $RefreshReg$(_c, "LoginView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"7cvdV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"8Ypd9","react":"21dqq"}],"4OGiN":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"7cvdV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"8Ypd9"}],"4OGiN":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$73d1 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -28629,6 +28634,6 @@ $RefreshReg$(_c, "SignupView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"7cvdV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"8Ypd9","react":"21dqq"}],"lJZlQ":[function() {},{}]},["7NEoL","4RSKp","d8Dch"], "d8Dch", "parcelRequireaec4")
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"7cvdV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"8Ypd9"}],"lJZlQ":[function() {},{}]},["7NEoL","4RSKp","d8Dch"], "d8Dch", "parcelRequireaec4")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
