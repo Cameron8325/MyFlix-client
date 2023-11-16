@@ -27189,14 +27189,11 @@ const MainView = ()=>{
     }, []);
     (0, _react.useEffect)(()=>{
         if (!token) return;
-        fetch("https://myflixmoviedb.herokuapp.com/register", {
+        fetch("https://camflixcf-73cf2f8e0ca3.herokuapp.com/users", {
             headers: {
                 Authorization: `Bearer ${token}`
             }
-        }).then((response)=>{
-            if (!response.ok) throw new Error("Failed to fetch user data");
-            return response.json();
-        }).then((userData)=>{
+        }).then((response)=>response.json()).then((userData)=>{
             setUser(userData);
         }).catch((error)=>{
             console.error("Error fetching user data", error);
@@ -27213,13 +27210,13 @@ const MainView = ()=>{
                 }
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 49,
+                lineNumber: 44,
                 columnNumber: 9
             }, undefined),
             "or",
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signupView.SignupView), {}, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 56,
+                lineNumber: 51,
                 columnNumber: 9
             }, undefined)
         ]
@@ -27229,14 +27226,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 63,
+        lineNumber: 58,
         columnNumber: 7
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 71,
+        lineNumber: 66,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27246,7 +27243,7 @@ const MainView = ()=>{
                     children: movie.Title
                 }, movie._id, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 77,
+                    lineNumber: 72,
                     columnNumber: 9
                 }, undefined)),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27258,13 +27255,13 @@ const MainView = ()=>{
                 children: "Logout"
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 81,
+                lineNumber: 76,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 75,
+        lineNumber: 70,
         columnNumber: 5
     }, undefined);
 };
@@ -28396,7 +28393,7 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _s = $RefreshSig$();
-const LoginView = (onLoggedIn)=>{
+const LoginView = ({ onLoggedIn })=>{
     _s();
     const [username, setUsername] = (0, _react.useState)("");
     const [password, setPassword] = (0, _react.useState)("");
