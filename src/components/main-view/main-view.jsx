@@ -12,30 +12,31 @@ export const MainView = () => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
 
+
   useEffect(() => {
-    fetch("https://camflixcf-73cf2f8e0ca3.herokuapp.com/movies")
+    if (token) {
+      fetch("https://camflixcf-73cf2f8e0ca3.herokuapp.com/users", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+        .then((response) => response.json())
+        .then((userData) => {
+          setUser(userData);
+        })
+        .catch((error) => {
+          console.error("Error fetching user data", error);
+        });
+    }
+  }, [token]);
+
+  useEffect(() => {
+    fetch("https://camflixcf-73cf2f8e0ca3.herokuapp.com/movies", {
+      headers: { Authorization: `Bearer ${token}` },
+    })
       .then((response) => response.json())
       .then((data) => {
         setMovies(data);
       })
       .catch((error) => console.error("Error fetching movies", error));
-  }, []);
-
-  useEffect(() => {
-    if (!token) {
-      return;
-    }
-  
-    fetch("https://camflixcf-73cf2f8e0ca3.herokuapp.com/users", {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((response) => response.json())
-      .then((userData) => {
-        setUser(userData);
-      })
-      .catch((error) => {
-        console.error("Error fetching user data", error);
-      });
   }, [token]);
 
   if (!user) {

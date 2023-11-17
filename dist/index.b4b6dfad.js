@@ -27183,13 +27183,7 @@ const MainView = ()=>{
     const [user, setUser] = (0, _react.useState)(null);
     const [token, setToken] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
-        fetch("https://camflixcf-73cf2f8e0ca3.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
-            setMovies(data);
-        }).catch((error)=>console.error("Error fetching movies", error));
-    }, []);
-    (0, _react.useEffect)(()=>{
-        if (!token) return;
-        fetch("https://camflixcf-73cf2f8e0ca3.herokuapp.com/users", {
+        if (token) fetch("https://camflixcf-73cf2f8e0ca3.herokuapp.com/users", {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -27198,6 +27192,17 @@ const MainView = ()=>{
         }).catch((error)=>{
             console.error("Error fetching user data", error);
         });
+    }, [
+        token
+    ]);
+    (0, _react.useEffect)(()=>{
+        fetch("https://camflixcf-73cf2f8e0ca3.herokuapp.com/movies", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>response.json()).then((data)=>{
+            setMovies(data);
+        }).catch((error)=>console.error("Error fetching movies", error));
     }, [
         token
     ]);
@@ -27210,13 +27215,13 @@ const MainView = ()=>{
                 }
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 44,
+                lineNumber: 45,
                 columnNumber: 9
             }, undefined),
             "or",
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signupView.SignupView), {}, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 51,
+                lineNumber: 52,
                 columnNumber: 9
             }, undefined)
         ]
@@ -27226,14 +27231,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 58,
+        lineNumber: 59,
         columnNumber: 7
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 66,
+        lineNumber: 67,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27243,7 +27248,7 @@ const MainView = ()=>{
                     children: movie.Title
                 }, movie._id, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 72,
+                    lineNumber: 73,
                     columnNumber: 9
                 }, undefined)),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27255,13 +27260,13 @@ const MainView = ()=>{
                 children: "Logout"
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 76,
+                lineNumber: 77,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 70,
+        lineNumber: 71,
         columnNumber: 5
     }, undefined);
 };
