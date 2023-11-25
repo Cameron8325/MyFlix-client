@@ -68,11 +68,9 @@ export const MainView = () => {
   }
 
   return (
-    <div>
+    <div className="my-flix">
       {movies.map((movie) => (
-        <div key={movie._id} onClick={() => setSelectedMovie(movie)}>
-          {movie.Title}
-        </div>
+        <MovieCard key={movie._id} movieData={movie} onMovieClick={() => setSelectedMovie(movie)} />
       ))}
       <button
         onClick={() => {

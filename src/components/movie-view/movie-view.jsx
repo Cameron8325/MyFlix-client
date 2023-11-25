@@ -1,43 +1,43 @@
 import PropTypes from 'prop-types';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
 export const MovieView = ({ movie, onBackClick }) => {
   return (
-    <div>
-      <div>{movie.ImageUrl}</div>
-      <div>
-        <span>Title: </span>
-        <span>{movie.Title}</span>
-      </div>
-      <div>
-        <span>Starring: </span>
-        <span>{movie.Starring.join(', ')}</span>
-      </div>
-      <div>
-        <span>Director: </span>
-        <span>{movie.Director.Name}</span>
-      </div>
-      <div>
-        <span>Description: </span>
-        <span>{movie.Description}</span>
-      </div>
-      <div>
-        <span>Rated: </span>
-        <span>{movie.Rating}</span>
-      </div>
-      <div>
-        <span>Released: </span>
-        <span>{movie.ReleaseYear}</span>
-      </div>
-      <div>
-        <span>Total Time: </span>
-        <span>{movie.TotalTime}</span>
-      </div>
-      <div>
-        <span>Genre: </span>
-        <span>{movie.Genre.Name}</span>
-      </div>
-      <button onClick={onBackClick}>Back</button>
-    </div>
+    <Card style={{ width: '18rem' }}>
+      <Card.Img variant="top" src={movie.ImageUrl} alt={movie.Title} />
+      <Card.Body>
+        <Card.Title>{movie.Title}</Card.Title>
+        <Card.Text>
+          <span>{movie.ReleaseYear}</span>
+        </Card.Text>
+        <Card.Text>
+          <span>Directed by </span>
+          <span>{movie.Director.Name}</span>
+        </Card.Text>
+        <Card.Text>
+          <span>Starring: </span>
+          <span>{movie.Starring.join(', ')}</span>
+        </Card.Text>
+        <Card.Text>
+          <span>{movie.Description}</span>
+        </Card.Text>
+        <Card.Text>
+          <span>Rated </span>
+          <span>{movie.Rating}</span>
+        </Card.Text>
+        <Card.Text>
+          <span>Genre: </span>
+          <span>{movie.Genre.Name}</span>
+        </Card.Text>
+        <Card.Text>
+          <span>{movie.TotalTime}</span>
+        </Card.Text>
+        <Button variant="primary" onClick={onBackClick}>
+          Back
+        </Button>
+      </Card.Body>
+    </Card>
   );
 };
 
