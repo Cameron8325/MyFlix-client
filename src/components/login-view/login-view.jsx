@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import '../../index.scss';
 
 export const LoginView = ({onLoggedIn}) => {
   const [username, setUsername] = useState("");
@@ -58,7 +59,7 @@ export const LoginView = ({onLoggedIn}) => {
           required
         />
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button className="submit-button" variant="primary" type="submit">
         Submit
       </Button>
     </Form>

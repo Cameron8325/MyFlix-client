@@ -3,6 +3,8 @@ import { MovieView } from "../movie-view/movie-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
+import './main-view.scss';
+
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -72,7 +74,7 @@ export const MainView = () => {
       {movies.map((movie) => (
         <MovieCard key={movie._id} movieData={movie} onMovieClick={() => setSelectedMovie(movie)} />
       ))}
-      <button
+      <button className='logout-button'
         onClick={() => {
           setUser(null);
           setToken(null);

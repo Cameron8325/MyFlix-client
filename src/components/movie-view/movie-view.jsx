@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import '../../index.scss';
 
 export const MovieView = ({ movie, onBackClick }) => {
   return (
@@ -33,7 +34,7 @@ export const MovieView = ({ movie, onBackClick }) => {
         <Card.Text>
           <span>{movie.TotalTime}</span>
         </Card.Text>
-        <Button variant="primary" onClick={onBackClick}>
+        <Button className='back-button' variant="primary" onClick={onBackClick}>
           Back
         </Button>
       </Card.Body>
