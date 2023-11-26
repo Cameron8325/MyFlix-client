@@ -5,7 +5,7 @@ import '../../index.scss';
 
 export const MovieView = ({ movie, onBackClick }) => {
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card className='mx-auto' style={{ width: '18rem' }}>
       <Card.Img variant="top" src="https://placehold.co/150" alt={movie.Title} />
       <Card.Body>
         <Card.Title>{movie.Title}</Card.Title>

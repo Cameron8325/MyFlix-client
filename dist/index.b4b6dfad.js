@@ -27374,6 +27374,7 @@ var _cardDefault = parcelHelpers.interopDefault(_card);
 var _indexScss = require("../../index.scss");
 const MovieView = ({ movie, onBackClick })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default), {
+        className: "mx-auto",
         style: {
             width: "18rem"
         },
@@ -30037,7 +30038,7 @@ const LoginView = ({ onLoggedIn })=>{
                 className: "submit-button",
                 variant: "primary",
                 type: "submit",
-                children: "Submit"
+                children: "Login"
             }, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
                 lineNumber: 63,
@@ -30817,7 +30818,7 @@ const SignupView = ()=>{
                 className: "submit-button",
                 variant: "primary",
                 type: "submit",
-                children: "Submit"
+                children: "Create Account"
             }, void 0, false, {
                 fileName: "src/components/signup-view/signup-view.jsx",
                 lineNumber: 85,
