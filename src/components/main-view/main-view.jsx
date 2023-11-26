@@ -3,8 +3,7 @@ import { MovieView } from "../movie-view/movie-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
-import { Container, Row } from "react-bootstrap";
-import { Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 
 
 
@@ -81,19 +80,21 @@ export const MainView = () => {
   }
 
   return (
-    <div>
-      {movies.map((movie) => (
-        <MovieCard key={movie._id} movieData={movie} onMovieClick={() => setSelectedMovie(movie)} />
-      ))}
-      <button className='logout-button'
-        onClick={() => {
-          setUser(null);
-          setToken(null);
-          localStorage.clear();
-        }}
-      >
+    <Container>
+      <Row>
+        {movies.map((movie) => (
+          <Col key={movie._id} md={4}>
+            <MovieCard movieData={movie} onMovieClick={() => setSelectedMovie(movie)} />
+          </Col>
+        ))}
+      </Row>
+      <Button className="logout-button" variant="danger" onClick={() => {
+        setUser(null);
+        setToken(null);
+        localStorage.clear();
+      }}>
         Logout
-      </button>
-    </div>
+      </Button>
+    </Container>
   );
 };
