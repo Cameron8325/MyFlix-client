@@ -4,8 +4,8 @@ import Card from 'react-bootstrap/Card';
 
 export const MovieCard = ({ movieData, onMovieClick }) => {
   return (
- <Card style={{ width: '18rem', cursor: 'pointer' }} onClick={() => onMovieClick(movieData)}>
-      <Card.Img variant="top" src={movieData.ImageUrl} />
+ <Card className="h-100" style={{ cursor: 'pointer' }} onClick={() => onMovieClick(movieData)}>
+      <Card.Img variant="top" src="https://placehold.co/150" />
       <Card.Body>
         <Card.Title>{movieData.Title}</Card.Title>
         <Card.Text>{movieData.Description}</Card.Text>
