@@ -45,6 +45,7 @@ export const LoginView = ({onLoggedIn}) => {
         <Form.Label>Username:</Form.Label>
         <Form.Control
           type="text"
+          placeholder="I need to see some ID."
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
@@ -54,6 +55,7 @@ export const LoginView = ({onLoggedIn}) => {
         <Form.Label>Password:</Form.Label>
         <Form.Control
           type="password"
+          placeholder="The Super Secret Handshake, remember?"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required

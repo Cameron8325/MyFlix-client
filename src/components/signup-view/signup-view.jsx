@@ -42,6 +42,7 @@ export const SignupView = () => {
         <Form.Label>Username: </Form.Label>
         <Form.Control
           type="text"
+          placeholder="Future MyFlixian ID"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
@@ -53,6 +54,7 @@ export const SignupView = () => {
         <Form.Label>Password: </Form.Label>
         <Form.Control
           type="password"
+          placeholder="Super Secret Handshake"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
@@ -63,6 +65,7 @@ export const SignupView = () => {
         <Form.Label>Email: </Form.Label>
         <Form.Control
           type="email"
+          placeholder="Number1MovieWatcher@email.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
