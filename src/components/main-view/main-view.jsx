@@ -3,7 +3,9 @@ import { MovieView } from "../movie-view/movie-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
-import '../../index.scss';
+import { Container, Row } from "react-bootstrap";
+import { Col } from "react-bootstrap";
+
 
 
 export const MainView = () => {
@@ -43,16 +45,25 @@ export const MainView = () => {
 
   if (!user) {
     return (
-      <>
-        <LoginView
-          onLoggedIn={(user, token) => {
-            setUser(user);
-            setToken(token);
-          }}
-        />
-        or
-        <SignupView />
-      </>
+      <Container>
+        <Row className="align-items-center">
+          <Col md={6}>
+            <Container style={{border: "1px solid black"}} >
+              <LoginView
+                onLoggedIn={(user, token) => {
+                  setUser(user);
+                  setToken(token);
+                }}
+              />
+            </Container>
+          </Col>
+          <Col md={6}>
+            <Container style={{border: "1px solid black"}} >
+              <SignupView />
+            </Container>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 
@@ -70,7 +81,7 @@ export const MainView = () => {
   }
 
   return (
-    <div className="my-flix">
+    <div>
       {movies.map((movie) => (
         <MovieCard key={movie._id} movieData={movie} onMovieClick={() => setSelectedMovie(movie)} />
       ))}

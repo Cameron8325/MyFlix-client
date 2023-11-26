@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import '../../index.scss';
+
 
 export const LoginView = ({onLoggedIn}) => {
   const [username, setUsername] = useState("");
@@ -41,7 +41,7 @@ export const LoginView = ({onLoggedIn}) => {
 
   return (
     <Form className="login-form" onSubmit={handleSubmit}>
-      <Form.Group controlId="formUsername">
+      <Form.Group className="mb-3" controlId="formUsername">
         <Form.Label>Username:</Form.Label>
         <Form.Control
           type="text"
@@ -51,7 +51,7 @@ export const LoginView = ({onLoggedIn}) => {
           required
         />
       </Form.Group>
-      <Form.Group controlId="formPassword">
+      <Form.Group className="mb-3" controlId="formPassword">
         <Form.Label>Password:</Form.Label>
         <Form.Control
           type="password"
