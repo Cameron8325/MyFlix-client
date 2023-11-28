@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import '../../index.scss';
+import './movie-view.scss';
 
 export const MovieView = ({ movie, onBackClick }) => {
   return (
     <Card className='mx-auto' style={{ width: '18rem' }}>
       <Card.Img variant="top" src={movie.ImageUrl} alt={movie.Title} />
-      <Card.Body>
+      <Card.Body className='movie-view-card'>
         <Card.Title>{movie.Title}</Card.Title>
         <Card.Text>
           <span>{movie.ReleaseYear}</span>

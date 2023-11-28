@@ -4,6 +4,7 @@ import { MovieCard } from "../movie-card/movie-card";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import '../../index.scss';
 
 
 
@@ -57,7 +58,7 @@ export const MainView = () => {
             </Container>
           </Col>
           <Col md={6}>
-            <Container style={{border: "1px solid black"}} >
+            <Container>
               <SignupView />
             </Container>
           </Col>

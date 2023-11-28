@@ -1,8 +1,12 @@
+// Import Bootstrap styles
+@import "~bootstrap/scss/bootstrap";
+
+// Define pastel colors (similar to the Login view)
 $border-color: #a9d6e5; // Light blue
 $button-color: #ffb6c1; // Light pink
 
-// Customize login form styles
-.login-form {
+// Customize signup form styles
+form {
   border: 2px solid $border-color;
   border-radius: 10px;
   padding: 20px;
@@ -35,5 +39,3 @@ $button-color: #ffb6c1; // Light pink
     }
   }
 }
-
-@import "~bootstrap/scss/bootstrap";

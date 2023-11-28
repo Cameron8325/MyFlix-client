@@ -1,9 +1,4 @@
-$color: black;
-
-body {
-  color: $color;
-  font-family: Arial, Helvetica, sans-serif;
-}
+@import "~bootstrap/scss/bootstrap";
 
 .submit-button, .logout-button {
   padding: 4px 12px 4px 12px;
