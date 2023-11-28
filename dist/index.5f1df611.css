@@ -39637,6 +39637,7 @@ textarea.form-control-lg {
 }
 
 .login-form {
+  background-color: #fff;
   border: 2px solid #a9d6e5;
   border-radius: 10px;
   max-width: 400px;
@@ -52875,6 +52876,7 @@ textarea.form-control-lg {
 }
 
 form {
+  background-color: #fff;
   border: 2px solid #a9d6e5;
   border-radius: 10px;
   max-width: 400px;

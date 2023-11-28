@@ -3,6 +3,8 @@
 
 $border-color: #a9d6e5; // Light blue
 $button-color: #ffb6c1; // Light pink
+$background-color: #e6e6ff; // Pastel purple
+$form-background-color: lighten($background-color, 5%);
 
 // Customize login form styles
 .login-form {
@@ -11,6 +13,7 @@ $button-color: #ffb6c1; // Light pink
   padding: 20px;
   max-width: 400px;
   margin: 0 auto;
+  background-color: $form-background-color;
 
   // Customize form groups
   .form-group {
