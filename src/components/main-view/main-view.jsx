@@ -47,7 +47,7 @@ export const MainView = () => {
       <Container>
         <Row className="align-items-center">
           <Col md={6}>
-            <Container style={{border: "1px solid black"}} >
+            <Container>
               <LoginView
                 onLoggedIn={(user, token) => {
                   setUser(user);
@@ -88,7 +88,7 @@ export const MainView = () => {
           </Col>
         ))}
       </Row>
-      <Button className="logout-button" variant="danger" onClick={() => {
+      <Button className="logout-button" onClick={() => {
         setUser(null);
         setToken(null);
         localStorage.clear();
