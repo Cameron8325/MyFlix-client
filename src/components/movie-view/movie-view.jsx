@@ -5,9 +5,9 @@ import './movie-view.scss';
 
 export const MovieView = ({ movie, onBackClick }) => {
   return (
-    <Card className='mx-auto' style={{ width: '18rem' }}>
+    <Card className='mx-auto movie-view' style={{ width: '18rem' }}>
       <Card.Img variant="top" src={movie.ImageUrl} alt={movie.Title} />
-      <Card.Body className='movie-view-card'>
+      <Card.Body>
         <Card.Title>{movie.Title}</Card.Title>
         <Card.Text>
           <span>{movie.ReleaseYear}</span>

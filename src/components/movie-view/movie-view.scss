@@ -1,22 +1,24 @@
 $border-color: #a2e8bd; // Pastel green
 
-.movie-view-card {
+.movie-view.card {
   border: 2px solid $border-color;
   border-radius: 10px;
+  padding: 10px;
   margin: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-
+  
   .back-button {
     margin-top: 10px;
     background-color: dodgerblue;
     border-color: dodgerblue;
     color: white;
-
+    
     &:hover {
       background-color: darken(dodgerblue, 10%);
       border-color: darken(dodgerblue, 10%);
     }
   }
 }
+
 
 @import "~bootstrap/scss/bootstrap";

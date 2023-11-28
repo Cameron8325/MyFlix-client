@@ -27365,7 +27365,7 @@ var _cardDefault = parcelHelpers.interopDefault(_card);
 var _movieViewScss = require("./movie-view.scss");
 const MovieView = ({ movie, onBackClick })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default), {
-        className: "mx-auto movie-view-card",
+        className: "mx-auto movie-view",
         style: {
             width: "18rem"
         },
