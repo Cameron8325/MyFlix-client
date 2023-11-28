@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import { Form, Button } from "react-bootstrap";
 import './login-view.scss'
 
 
@@ -41,6 +40,7 @@ export const LoginView = ({onLoggedIn}) => {
 
   return (
     <Form className="login-form" onSubmit={handleSubmit}>
+       <h1 className="login-header">Login</h1>
       <Form.Group className="mb-3" controlId="formUsername">
         <Form.Label>Username:</Form.Label>
         <Form.Control

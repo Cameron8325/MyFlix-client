@@ -1,3 +1,6 @@
+// Import Bootstrap styles
+@import "~bootstrap/scss/bootstrap";
+
 $border-color: #a9d6e5; // Light blue
 $button-color: #ffb6c1; // Light pink
 
@@ -35,5 +38,3 @@ $button-color: #ffb6c1; // Light pink
     }
   }
 }
-
-@import "~bootstrap/scss/bootstrap";
