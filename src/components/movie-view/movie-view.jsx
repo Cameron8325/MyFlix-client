@@ -1,9 +1,14 @@
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { Link, useParams } from "react-router-dom";
 import './movie-view.scss';
 
-export const MovieView = ({ movie, onBackClick }) => {
+export const MovieView = ({ movies }) => {
+  const { movieId } = useParams();
+
+  const movie = movies.find((m) => m._id === movieId);
+
   return (
     <Card className='mx-auto movie-view' style={{ width: '18rem' }}>
       <Card.Img variant="top" src={movie.ImageUrl} alt={movie.Title} />
@@ -34,29 +39,14 @@ export const MovieView = ({ movie, onBackClick }) => {
         <Card.Text>
           <span>{movie.TotalTime}</span>
         </Card.Text>
-        <Button className='back-button' variant="primary" onClick={onBackClick}>
-          Back
-        </Button>
+        <Link to="/">
+          <Button className='back-button' variant="primary">Back</Button>
+        </Link>
       </Card.Body>
     </Card>
   );
 };
 
 MovieView.propTypes = {
-  movie: PropTypes.shape({
-    ImageUrl: PropTypes.string.isRequired,
-    Title: PropTypes.string.isRequired,
-    Genre: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-    }).isRequired,
-    Director: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-    }).isRequired,
-    Description: PropTypes.string.isRequired,
-    Starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-    Rating: PropTypes.string.isRequired,
-    ReleaseYear: PropTypes.number.isRequired,
-    TotalTime: PropTypes.string.isRequired,
-  }).isRequired,
-  onBackClick: PropTypes.func.isRequired,
+  movies: PropTypes.array.isRequired,
 };
