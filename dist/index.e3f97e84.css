@@ -1,5 +1,5 @@
 .movie-card.card {
-  border: 2px solid #a2e8bd;
+  border: 4px solid #a2e8bd;
   border-radius: 10px;
   box-shadow: 0 0 10px #0000001a;
 }
@@ -26414,7 +26414,7 @@ textarea.form-control-lg {
 
 .login-form {
   background-color: #fff;
-  border: 2px solid #a9d6e5;
+  border: 4px solid #a9d6e5;
   border-radius: 10px;
   max-width: 400px;
   margin: 0 auto;
@@ -39653,7 +39653,7 @@ textarea.form-control-lg {
 
 form {
   background-color: #fff;
-  border: 2px solid #a9d6e5;
+  border: 4px solid #a9d6e5;
   border-radius: 10px;
   max-width: 400px;
   margin: 0 auto;
@@ -52890,14 +52890,14 @@ textarea.form-control-lg {
   }
 }
 
-body {
+#root, html {
   background-color: #e6e6ff;
   margin: 0;
   padding: 0;
 }
 
 .movie-view.card {
-  border: 2px solid #a2e8bd;
+  border: 4px solid #a2e8bd;
   border-radius: 10px;
   margin: 20px;
   padding: 10px;

@@ -1,7 +1,7 @@
 @import "~bootstrap/scss/bootstrap";
 $background-color: #e6e6ff; // Pastel purple
 
-body {
+#root, html {
   background-color: $background-color;
   margin: 0;  // Reset margin to ensure full coverage
   padding: 0; // Reset padding to ensure full coverage
