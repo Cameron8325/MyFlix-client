@@ -3,13 +3,11 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 
 export const ProfileView = ({ user, onLogout }) => {
-  // Use useParams to get the username from the URL
-  const { username } = useParams();
   const [userData, setUserData] = useState(null);
+  const { username } = useParams();
 
   useEffect(() => {
-    // Check if username is defined before making the fetch request
-    if (username) {
+    if (user && username) {
       fetch(`https://camflixcf-73cf2f8e0ca3.herokuapp.com/users/${username}`, {
         headers: {
           Authorization: `Bearer ${user.token}`,
