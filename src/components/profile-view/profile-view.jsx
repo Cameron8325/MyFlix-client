@@ -1,24 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
 
 export const ProfileView = ({ user, onLogout }) => {
+  // Use useParams to get the username from the URL
+  const { username } = useParams();
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
-    // Assuming you have an API endpoint to fetch detailed user information
-    fetch(`https://my-flix-app-api.herokuapp.com/users/${user.Username}`, {
-      headers: {
-        Authorization: `Bearer ${user.token}`,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setUserData(data);
+    // Check if username is defined before making the fetch request
+    if (username) {
+      fetch(`https://camflixcf-73cf2f8e0ca3.herokuapp.com/users/${username}`, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
       })
-      .catch((error) => {
-        console.error('Error fetching user data', error);
-      });
-  }, [user]);
+        .then((response) => response.json())
+        .then((data) => {
+          setUserData(data);
+        })
+        .catch((error) => {
+          console.error('Error fetching user data', error);
+        });
+    }
+  }, [user, username]);
 
   return (
     <Container>

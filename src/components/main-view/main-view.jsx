@@ -65,7 +65,7 @@ export const MainView = () => {
                     </Col>
                   ))}
                 </Row>
-                <Link to="/profile">
+                <Link to="users/${userData.Username}">
                   <Button className="logout-button">Logout</Button>
                 </Link>
               </Container>
@@ -93,7 +93,7 @@ export const MainView = () => {
           }
         />
         <Route path="/movies/:movieId" element={<MovieView movies={movies} />} />
-        <Route path="/profile" element={<ProfileView user={user} onLogout={() => onLoggedOut()} />} />
+        <Route path="users/:username" element={<ProfileView user={user} onLogout={() => onLoggedOut()} />} />
       </Routes>
     </BrowserRouter>
   );
