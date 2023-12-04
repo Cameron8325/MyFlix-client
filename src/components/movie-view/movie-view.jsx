@@ -42,6 +42,11 @@ export const MovieView = ({ movies }) => {
         <Link to="/">
           <Button className='back-button' variant="primary">Back</Button>
         </Link>
+        <Link to="#">
+          <Button variant="danger" onClick={() => onFavoriteClick(movieData._id)}>
+            &#x2665; Favorite
+          </Button>
+        </Link>
       </Card.Body>
     </Card>
   );
