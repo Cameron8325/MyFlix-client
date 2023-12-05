@@ -41574,12 +41574,12 @@ const MovieView = ({ movies })=>{
                         to: "#",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
                             variant: "danger",
-                            onClick: ()=>onFavoriteClick(movieData._id),
+                            onClick: ()=>onFavoriteClick(movie._id),
                             children: "\u2665 Favorite"
                         }, void 0, false, {
                             fileName: "src/components/movie-view/movie-view.jsx",
                             lineNumber: 46,
-                            columnNumber: 11
+                            columnNumber: 9
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
