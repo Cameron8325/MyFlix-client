@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import './movie-card.scss';
 
-export const MovieCard = ({ user, movieData }) => {
+export const MovieCard = ({ movieData }) => {
   return (
     <Card className="h-100 movie-card">
       <Link to={`/movies/${encodeURIComponent(movieData._id)}`}>
