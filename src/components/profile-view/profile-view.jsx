@@ -20,22 +20,27 @@ export const ProfileView = ({ user, onLogout }) => {
   }, [user]);
 
   const handleUpdate = () => {
+    const updateData = {};
+  
+    // Only include fields with non-empty values in the request
+    if (newUsername) updateData.Username = newUsername;
+    if (newPassword) updateData.Password = newPassword;
+    if (newEmail) updateData.Email = newEmail;
+    if (newBirthday) updateData.Birthday = newBirthday;
+  
     fetch(`https://camflixcf-73cf2f8e0ca3.herokuapp.com/users/${username}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
-      body: JSON.stringify({
-        Username: newUsername,
-        Password: newPassword,
-        Email: newEmail,
-        Birthday: newBirthday,
-      }),
+      body: JSON.stringify(updateData),
     })
       .then((response) => response.json())
       .then((updatedUser) => setUserData(updatedUser))
       .catch((error) => console.error('Error updating user information', error));
+  };
+  
   };
 
   const handleRemoveFavorite = (movieId) => {
