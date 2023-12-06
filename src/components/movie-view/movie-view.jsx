@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import PropTypes from "prop-types";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 import { Link, useParams } from "react-router-dom";
-import './movie-view.scss';
+import "./movie-view.scss";
 
 export const MovieView = ({ movies }) => {
   const { movieId } = useParams();
@@ -10,7 +10,7 @@ export const MovieView = ({ movies }) => {
   const movie = movies.find((m) => m._id === movieId);
 
   return (
-    <Card className='mx-auto movie-view' style={{ width: '18rem' }}>
+    <Card className="mx-auto movie-view" style={{ width: "18rem" }}>
       <Card.Img variant="top" src={movie.ImageUrl} alt={movie.Title} />
       <Card.Body>
         <Card.Title>{movie.Title}</Card.Title>
@@ -23,7 +23,7 @@ export const MovieView = ({ movies }) => {
         </Card.Text>
         <Card.Text>
           <span>Starring: </span>
-          <span>{movie.Starring.join(', ')}</span>
+          <span>{movie.Starring.join(", ")}</span>
         </Card.Text>
         <Card.Text>
           <span>{movie.Description}</span>
@@ -40,14 +40,13 @@ export const MovieView = ({ movies }) => {
           <span>{movie.TotalTime}</span>
         </Card.Text>
         <Link to="/">
-          <Button className='back-button' variant="primary">Back</Button>
+          <Button className="back-button" variant="primary">
+            Back
+          </Button>
         </Link>
-        <Link to="#">
         <Button variant="danger" onClick={() => onFavoriteClick(movie._id)}>
-  &#x2665; Favorite
-</Button>
-
-        </Link>
+          &#x2665; Favorite
+        </Button>
       </Card.Body>
     </Card>
   );
