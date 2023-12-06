@@ -42,6 +42,21 @@ export const MainView = () => {
       .catch((error) => console.error("Error fetching movies", error));
   }, [token]);
 
+  const onFavoriteClick = (movieId) => {
+    fetch(`https://camflixcf-73cf2f8e0ca3.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((updatedUser) => {
+        setUser(updatedUser);
+      })
+      .catch((error) => console.error('Error adding movie to favorites', error));
+  };
+
   return (
     <BrowserRouter>
       <NavigationBar
@@ -61,7 +76,7 @@ export const MainView = () => {
                 <Row>
                   {movies.map((movie) => (
                     <Col key={movie._id} xs={6} md={4} lg={3} xl={2} className="mb-5">
-                      <MovieCard movieData={movie} />
+                      <MovieCard movieData={movie} onFavoriteClick={onFavoriteClick} />
                     </Col>
                   ))}
                 </Row>
@@ -93,7 +108,7 @@ export const MainView = () => {
           }
         />
         <Route path="/movies/:movieId" element={<MovieView movies={movies} />} />
-        <Route path="/users/:username" element={<ProfileView user={user} onLogout={() => onLoggedOut()} />} />
+        <Route path="/users/:username" element={<ProfileView user={user} movies={movies} onLogout={() => onLoggedOut()} />} />
       </Routes>
     </BrowserRouter>
   );

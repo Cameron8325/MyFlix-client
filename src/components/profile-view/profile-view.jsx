@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 
-export const ProfileView = ({ user, onLogout }) => {
+export const ProfileView = ({ user, onLogout, movies }) => {
   const { username } = useParams();
   const [userData, setUserData] = useState(user);
   const [newUsername, setNewUsername] = useState(user.Username);
