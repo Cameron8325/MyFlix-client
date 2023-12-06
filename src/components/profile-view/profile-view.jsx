@@ -107,12 +107,14 @@ export const ProfileView = ({ user, onLogout }) => {
                 onChange={(e) => setNewBirthday(e.target.value)}
               />
             </Form.Group>
-            <Button variant="primary" onClick={handleUpdate}>
-              Update Profile
-            </Button>
-            <Button variant="danger" onClick={handleDeregister} className="ml-2">
-              Deregister
-            </Button>
+            <div className="mt-3 d-flex justify-content-around">
+              <Button variant="primary" onClick={handleUpdate}>
+                Update Profile
+              </Button>
+              <Button variant="danger" onClick={handleDeregister} className="ml-2">
+                Deregister
+              </Button>
+            </div>
           </Form>
         </Col>
         <Col md={6}>
