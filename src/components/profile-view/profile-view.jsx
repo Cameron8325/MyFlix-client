@@ -41,7 +41,6 @@ export const ProfileView = ({ user, onLogout }) => {
       .catch((error) => console.error('Error updating user information', error));
   };
   
-  };
 
   const handleRemoveFavorite = (movieId) => {
     fetch(`https://camflixcf-73cf2f8e0ca3.herokuapp.com/users/${username}/movies/${movieId}`, {
