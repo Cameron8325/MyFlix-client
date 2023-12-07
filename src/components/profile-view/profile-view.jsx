@@ -70,6 +70,7 @@ export const ProfileView = ({ user, onLogout, movies }) => {
       },
     })
       .then(() => {
+        window.alert('Goodbye!');
         onLogout();
       })
       .catch((error) => console.error('Error deregistering user', error));
