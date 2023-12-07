@@ -7,10 +7,11 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { ProfileView } from "../profile-view/profile-view.jsx";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
-import { useHistory } from 'react-router-dom';
 import "../../index.scss";
 
 export const MainView = () => {
+  const [navigate, setNavigate] = useState(null);
+  const [navigateCallback, setNavigateCallback] = useState(null);
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
   const [movies, setMovies] = useState([]);
@@ -65,11 +66,13 @@ export const MainView = () => {
       );
   };
 
-  const onLoggedOut = (history) => {
+  const onLoggedOut = () => {
     setUser(null);
     setToken(null);
     localStorage.clear();
-    history.push("/");
+    if (navigateCallback) {
+      navigateCallback(); // Trigger the callback for navigation
+    }
   };
 
   return (
@@ -136,8 +139,9 @@ export const MainView = () => {
           element={
             <ProfileView
               user={user}
-              onLoggedOut={() => onLoggedOut(history)}
+              onLoggedOut={() => onLoggedOut()}
               movies={movies}
+              setNavigateCallback={setNavigateCallback}
             />
           }
         />

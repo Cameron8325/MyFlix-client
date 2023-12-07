@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
-
-export const ProfileView = ({ user, onLoggedOut, movies }) => {
+export const ProfileView = ({ user, onLoggedOut, movies, setNavigateCallback }) => {
+  const navigate = useNavigate();
   const { username } = useParams();
   const [userData, setUserData] = useState(user);
-  const [newUsername, setNewUsername] = useState(user.Username);
+  const [newUsername, setNewUsername] = useState(user ? user.Username : '');
   const [newPassword, setNewPassword] = useState('');
-  const [newEmail, setNewEmail] = useState(user.Email);
-  const [newBirthday, setNewBirthday] = useState(user.Birthday);
-  const [favoriteMovies, setFavoriteMovies] = useState(user.FavoriteMovies || []);
+  const [newEmail, setNewEmail] = useState(user ? user.Email : '');
+  const [newBirthday, setNewBirthday] = useState(user ? user.Birthday : '');
+  const [favoriteMovies, setFavoriteMovies] = useState(user ? user.FavoriteMovies || [] : []);
 
   useEffect(() => {
     if (user) {
@@ -74,7 +75,9 @@ export const ProfileView = ({ user, onLoggedOut, movies }) => {
       .then(() => {
         window.alert('Goodbye!');
         onLoggedOut();
-        navigate('/');
+        if (setNavigateCallback) {
+          setNavigateCallback(() => navigate('/')); // Use the callback for navigation
+        }
       })
       .catch((error) => console.error('Error deregistering user', error));
   };
