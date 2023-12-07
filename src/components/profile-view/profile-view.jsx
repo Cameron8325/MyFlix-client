@@ -44,6 +44,7 @@ export const ProfileView = ({ user, onLogout, movies }) => {
         setNewUsername(updatedUser.Username);
         setNewEmail(updatedUser.Email);
         setNewBirthday(updatedUser.Birthday);
+        window.alert('Your information has been updated!');
       })
       .catch((error) => console.error('Error updating user information', error));
   };
