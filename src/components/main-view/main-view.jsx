@@ -53,6 +53,7 @@ export const MainView = () => {
       .then((response) => response.json())
       .then((updatedUser) => {
         setUser(updatedUser);
+        window.alert(`${movieData.Title} added to favorites!`);
       })
       .catch((error) => console.error('Error adding movie to favorites', error));
   };
