@@ -12,16 +12,18 @@ export const ProfileView = ({ user, onLogout, movies }) => {
   const [favoriteMovies, setFavoriteMovies] = useState(user.FavoriteMovies || []);
 
   useEffect(() => {
-    setUserData(user);
-    setNewUsername(user.Username);
-    setNewEmail(user.Email);
-    setNewBirthday(user.Birthday);
-    setFavoriteMovies(user.FavoriteMovies || []);
+    if (user) {
+      setUserData(user);
+      setNewUsername(user.Username);
+      setNewEmail(user.Email);
+      setNewBirthday(user.Birthday);
+      setFavoriteMovies(user.FavoriteMovies || []);
+    }
   }, [user]);
 
   const handleUpdate = () => {
     const updateData = {};
-  
+    
     // Only include fields with non-empty values in the request
     if (newUsername) updateData.Username = newUsername;
     if (newPassword) updateData.Password = newPassword;
@@ -37,10 +39,14 @@ export const ProfileView = ({ user, onLogout, movies }) => {
       body: JSON.stringify(updateData),
     })
       .then((response) => response.json())
-      .then((updatedUser) => setUserData(updatedUser))
+      .then((updatedUser) => {
+        setUserData(updatedUser);
+        setNewUsername(updatedUser.Username);
+        setNewEmail(updatedUser.Email);
+        setNewBirthday(updatedUser.Birthday);
+      })
       .catch((error) => console.error('Error updating user information', error));
   };
-  
 
   const handleRemoveFavorite = (movieId) => {
     fetch(`https://camflixcf-73cf2f8e0ca3.herokuapp.com/users/${username}/movies/${movieId}`, {
