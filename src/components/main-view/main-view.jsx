@@ -7,7 +7,8 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { ProfileView } from "../profile-view/profile-view.jsx";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
-import '../../index.scss';
+import { useHistory } from 'react-router-dom';
+import "../../index.scss";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -43,31 +44,37 @@ export const MainView = () => {
   }, [token]);
 
   const onFavoriteClick = (movieId) => {
-    fetch(`https://camflixcf-73cf2f8e0ca3.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    const movie = movies.find((m) => m._id === movieId);
+    fetch(
+      `https://camflixcf-73cf2f8e0ca3.herokuapp.com/users/${user.Username}/movies/${movieId}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
       .then((response) => response.json())
       .then((updatedUser) => {
         setUser(updatedUser);
-        window.alert(`${movieData.Title} added to favorites!`);
+        window.alert(`${movie.Title} added to favorites!`);
       })
-      .catch((error) => console.error('Error adding movie to favorites', error));
+      .catch((error) =>
+        console.error("Error adding movie to favorites", error)
+      );
+  };
+
+  const onLoggedOut = (history) => {
+    setUser(null);
+    setToken(null);
+    localStorage.clear();
+    history.push("/");
   };
 
   return (
     <BrowserRouter>
-      <NavigationBar
-        user={user}
-        onLoggedOut={() => {
-          setUser(null);
-          setToken(null);
-          localStorage.clear();
-        }}
-      />
+      <NavigationBar user={user} onLoggedOut={onLoggedOut} />
       <Routes>
         <Route
           path="/"
@@ -76,8 +83,18 @@ export const MainView = () => {
               <Container>
                 <Row>
                   {movies.map((movie) => (
-                    <Col key={movie._id} xs={6} md={4} lg={3} xl={2} className="mb-5">
-                      <MovieCard movieData={movie} onFavoriteClick={onFavoriteClick} />
+                    <Col
+                      key={movie._id}
+                      xs={6}
+                      md={4}
+                      lg={3}
+                      xl={2}
+                      className="mb-5"
+                    >
+                      <MovieCard
+                        movieData={movie}
+                        onFavoriteClick={onFavoriteClick}
+                      />
                     </Col>
                   ))}
                 </Row>
@@ -108,8 +125,22 @@ export const MainView = () => {
             )
           }
         />
-        <Route path="/movies/:movieId" element={<MovieView movies={movies} onFavoriteClick={onFavoriteClick} />} />
-        <Route path="/users/:username" element={<ProfileView user={user} movies={movies} onLogout={() => onLoggedOut()} />} />
+        <Route
+          path="/movies/:movieId"
+          element={
+            <MovieView movies={movies} onFavoriteClick={onFavoriteClick} />
+          }
+        />
+        <Route
+          path="/users/:username"
+          element={
+            <ProfileView
+              user={user}
+              onLoggedOut={() => onLoggedOut(history)}
+              movies={movies}
+            />
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

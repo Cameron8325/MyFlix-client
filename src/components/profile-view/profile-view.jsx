@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 
-export const ProfileView = ({ user, onLogout, movies }) => {
+
+
+export const ProfileView = ({ user, onLoggedOut, movies }) => {
   const { username } = useParams();
   const [userData, setUserData] = useState(user);
   const [newUsername, setNewUsername] = useState(user.Username);
@@ -71,7 +73,8 @@ export const ProfileView = ({ user, onLogout, movies }) => {
     })
       .then(() => {
         window.alert('Goodbye!');
-        onLogout();
+        onLoggedOut();
+        navigate('/');
       })
       .catch((error) => console.error('Error deregistering user', error));
   };

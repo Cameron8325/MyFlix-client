@@ -4,7 +4,7 @@ import Card from "react-bootstrap/Card";
 import { Link, useParams } from "react-router-dom";
 import "./movie-view.scss";
 
-export const MovieView = ({ movies }) => {
+export const MovieView = ({ movies, onFavoriteClick }) => {
   const { movieId } = useParams();
 
   const movie = movies.find((m) => m._id === movieId);
@@ -54,4 +54,5 @@ export const MovieView = ({ movies }) => {
 
 MovieView.propTypes = {
   movies: PropTypes.array.isRequired,
+  onFavoriteClick: PropTypes.func.isRequired,
 };
