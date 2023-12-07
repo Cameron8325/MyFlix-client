@@ -13,8 +13,8 @@ export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
   const [movies, setMovies] = useState([]);
-  const [user, setUser] = useState(null);
-  const [token, setToken] = useState(null);
+  const [user, setUser] = useState(storedUser); // Set initial state with stored user
+  const [token, setToken] = useState(storedToken);
 
   useEffect(() => {
     if (token) {
@@ -107,7 +107,7 @@ export const MainView = () => {
             )
           }
         />
-        <Route path="/movies/:movieId" element={<MovieView movies={movies} />} />
+        <Route path="/movies/:movieId" element={<MovieView movies={movies} onFavoriteClick={onFavoriteClick} />} />
         <Route path="/users/:username" element={<ProfileView user={user} movies={movies} onLogout={() => onLoggedOut()} />} />
       </Routes>
     </BrowserRouter>
