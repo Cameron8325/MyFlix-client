@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 
 
-export const ProfileView = ({ user, onLoggedOut, movies, setNavigateCallback }) => {
-  const navigate = useNavigate();
+export const ProfileView = ({ user, onLoggedOut, movies }) => {
   const { username } = useParams();
   const [userData, setUserData] = useState(user);
   const [newUsername, setNewUsername] = useState(user ? user.Username : '');
@@ -75,9 +73,7 @@ export const ProfileView = ({ user, onLoggedOut, movies, setNavigateCallback }) 
       .then(() => {
         window.alert('Goodbye!');
         onLoggedOut();
-        if (setNavigateCallback) {
-          setNavigateCallback(() => navigate('/')); // Use the callback for navigation
-        }
+        window.location.replace('/');
       })
       .catch((error) => console.error('Error deregistering user', error));
   };

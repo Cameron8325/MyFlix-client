@@ -10,8 +10,6 @@ import { NavigationBar } from "../navigation-bar/navigation-bar";
 import "../../index.scss";
 
 export const MainView = () => {
-  const [navigate, setNavigate] = useState(null);
-  const [navigateCallback, setNavigateCallback] = useState(null);
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
   const [movies, setMovies] = useState([]);
@@ -70,9 +68,7 @@ export const MainView = () => {
     setUser(null);
     setToken(null);
     localStorage.clear();
-    if (navigateCallback) {
-      navigateCallback(); // Trigger the callback for navigation
-    }
+    window.location.replace('/');
   };
 
   return (
@@ -141,7 +137,6 @@ export const MainView = () => {
               user={user}
               onLoggedOut={() => onLoggedOut()}
               movies={movies}
-              setNavigateCallback={setNavigateCallback}
             />
           }
         />
