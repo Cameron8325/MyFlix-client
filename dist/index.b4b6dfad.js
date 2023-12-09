@@ -27195,6 +27195,7 @@ const MainView = ()=>{
     const [movies, setMovies] = (0, _react.useState)([]);
     const [user, setUser] = (0, _react.useState)(storedUser); // Set initial state with stored user
     const [token, setToken] = (0, _react.useState)(storedToken);
+    const [selectedGenre, setSelectedGenre] = (0, _react.useState)("");
     (0, _react.useEffect)(()=>{
         if (token) fetch("https://camflixcf-73cf2f8e0ca3.herokuapp.com/users", {
             headers: {
@@ -27243,6 +27244,10 @@ const MainView = ()=>{
         localStorage.clear();
         window.location.replace("/");
     };
+    const handleGenreChange = (event)=>{
+        setSelectedGenre(event.target.value);
+    };
+    const filteredMovies = selectedGenre ? movies.filter((movie)=>movie.Genre && movie.Genre.Name === selectedGenre) : movies;
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.BrowserRouter), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navigationBar.NavigationBar), {
@@ -27250,7 +27255,7 @@ const MainView = ()=>{
                 onLoggedOut: onLoggedOut
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 82,
+                lineNumber: 91,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Routes), {
@@ -27260,7 +27265,43 @@ const MainView = ()=>{
                         element: user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
                             children: [
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
-                                    children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
+                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
+                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Select, {
+                                            onChange: handleGenreChange,
+                                            className: "mb-3",
+                                            style: {
+                                                width: "200px",
+                                                marginLeft: "auto"
+                                            },
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                                    value: "",
+                                                    children: "All Genres"
+                                                }, void 0, false, void 0, void 0),
+                                                [
+                                                    "Action",
+                                                    "Adventure",
+                                                    "Biography",
+                                                    "Comedy",
+                                                    "Crime",
+                                                    "Drama",
+                                                    "Fantasy",
+                                                    "Horror",
+                                                    "Musical",
+                                                    "Romance",
+                                                    "Sci-Fi",
+                                                    "Thriller",
+                                                    "War"
+                                                ].map((genre)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                                        value: genre,
+                                                        children: genre
+                                                    }, genre, false, void 0, void 0))
+                                            ]
+                                        }, void 0, true, void 0, void 0)
+                                    }, void 0, false, void 0, void 0)
+                                }, void 0, false, void 0, void 0),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
+                                    children: filteredMovies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                                             xs: 6,
                                             md: 4,
                                             lg: 3,
@@ -27306,7 +27347,7 @@ const MainView = ()=>{
                         }, void 0, false, void 0, void 0)
                     }, void 0, false, {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 84,
+                        lineNumber: 93,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27317,7 +27358,7 @@ const MainView = ()=>{
                         }, void 0, false, void 0, void 0)
                     }, void 0, false, {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 133,
+                        lineNumber: 156,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27329,23 +27370,23 @@ const MainView = ()=>{
                         }, void 0, false, void 0, void 0)
                     }, void 0, false, {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 139,
+                        lineNumber: 162,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 83,
+                lineNumber: 92,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 81,
+        lineNumber: 90,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "NfZNNvPs+w6yVIFOUKLLkPFlv2M=");
+_s(MainView, "4rAQvBe/AdiQz+3muaqyAgAjWyY=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
@@ -41314,7 +41355,7 @@ var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
 const NavigationBar = ({ user, onLoggedOut })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar), {
-        className: "mb-5",
+        className: "mb-3",
         bg: "light",
         expand: "lg",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {

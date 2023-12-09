@@ -3,7 +3,7 @@ import { MovieView } from "../movie-view/movie-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { ProfileView } from "../profile-view/profile-view.jsx";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
@@ -15,6 +15,7 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
   const [user, setUser] = useState(storedUser); // Set initial state with stored user
   const [token, setToken] = useState(storedToken);
+  const [selectedGenre, setSelectedGenre] = useState("");
 
   useEffect(() => {
     if (token) {
@@ -77,6 +78,14 @@ export const MainView = () => {
     window.location.replace('/');
   };
 
+  const handleGenreChange = (event) => {
+    setSelectedGenre(event.target.value);
+  };
+
+  const filteredMovies = selectedGenre
+  ? movies.filter((movie) => movie.Genre && movie.Genre.Name === selectedGenre)
+  : movies;
+
   return (
     <BrowserRouter>
       <NavigationBar user={user} onLoggedOut={onLoggedOut} />
@@ -87,7 +96,21 @@ export const MainView = () => {
             user ? (
               <Container>
                 <Row>
-                  {movies.map((movie) => (
+                  <Col>
+                    <Form.Select onChange={handleGenreChange} className="mb-3" style={{ width: '200px', marginLeft: 'auto' }}>
+                      <option value="">All Genres</option>
+                      {[
+                        'Action', 'Adventure', 'Biography', 'Comedy', 'Crime',
+                        'Drama', 'Fantasy', 'Horror', 'Musical', 'Romance',
+                        'Sci-Fi', 'Thriller', 'War'
+                      ].map((genre) => (
+                        <option key={genre} value={genre}>{genre}</option>
+                      ))}
+                    </Form.Select>
+                  </Col>
+                </Row>
+                <Row>
+                  {filteredMovies.map((movie) => (
                     <Col
                       key={movie._id}
                       xs={6}
