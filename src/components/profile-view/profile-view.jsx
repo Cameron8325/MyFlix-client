@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Button, Form } from 'react-bootstrap';
-import { Link, useParams } from 'react-router-dom';
-
+import React, { useState, useEffect } from "react";
+import { Container, Row, Col, Button, Form } from "react-bootstrap";
+import { Link, useParams } from "react-router-dom";
+import "./profile-view.scss";
 
 export const ProfileView = ({ user, onLoggedOut, movies }) => {
   const { username } = useParams();
   const [userData, setUserData] = useState(user);
-  const [newUsername, setNewUsername] = useState(user ? user.Username : '');
-  const [newPassword, setNewPassword] = useState('');
-  const [newEmail, setNewEmail] = useState(user ? user.Email : '');
-  const [newBirthday, setNewBirthday] = useState(user ? user.Birthday : '');
-  const [favoriteMovies, setFavoriteMovies] = useState(user ? user.FavoriteMovies || [] : []);
+  const [newUsername, setNewUsername] = useState(user ? user.Username : "");
+  const [newPassword, setNewPassword] = useState("");
+  const [newEmail, setNewEmail] = useState(user ? user.Email : "");
+  const [newBirthday, setNewBirthday] = useState(user ? user.Birthday : "");
+  const [favoriteMovies, setFavoriteMovies] = useState(
+    user ? user.FavoriteMovies || [] : []
+  );
 
   useEffect(() => {
     if (user) {
@@ -24,18 +26,18 @@ export const ProfileView = ({ user, onLoggedOut, movies }) => {
 
   const handleUpdate = () => {
     const updateData = {};
-    
+
     // Only include fields with non-empty values in the request
     if (newUsername) updateData.Username = newUsername;
     if (newPassword) updateData.Password = newPassword;
     if (newEmail) updateData.Email = newEmail;
     if (newBirthday) updateData.Birthday = newBirthday;
-  
+
     fetch(`https://camflixcf-73cf2f8e0ca3.herokuapp.com/users/${username}`, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify(updateData),
     })
@@ -45,37 +47,46 @@ export const ProfileView = ({ user, onLoggedOut, movies }) => {
         setNewUsername(updatedUser.Username);
         setNewEmail(updatedUser.Email);
         setNewBirthday(updatedUser.Birthday);
-        window.alert('Your information has been updated!');
+        window.alert("Your information has been updated!");
       })
-      .catch((error) => console.error('Error updating user information', error));
+      .catch((error) =>
+        console.error("Error updating user information", error)
+      );
   };
 
   const handleRemoveFavorite = (movieId) => {
-    fetch(`https://camflixcf-73cf2f8e0ca3.herokuapp.com/users/${username}/movies/${movieId}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-      },
-    })
+    fetch(
+      `https://camflixcf-73cf2f8e0ca3.herokuapp.com/users/${username}/movies/${movieId}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    )
       .then((response) => response.json())
-      .then((updatedUser) => setFavoriteMovies(updatedUser.FavoriteMovies || []))
-      .catch((error) => console.error('Error removing movie from favorites', error));
+      .then((updatedUser) =>
+        setFavoriteMovies(updatedUser.FavoriteMovies || [])
+      )
+      .catch((error) =>
+        console.error("Error removing movie from favorites", error)
+      );
   };
 
   const handleDeregister = () => {
     fetch(`https://camflixcf-73cf2f8e0ca3.herokuapp.com/users/${username}`, {
-      method: 'DELETE',
+      method: "DELETE",
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     })
       .then(() => {
-        window.alert('Goodbye!');
+        window.alert("Goodbye!");
         onLoggedOut();
-        window.location.replace('/');
+        window.location.replace("/");
       })
-      .catch((error) => console.error('Error deregistering user', error));
+      .catch((error) => console.error("Error deregistering user", error));
   };
 
   return (
@@ -117,7 +128,11 @@ export const ProfileView = ({ user, onLoggedOut, movies }) => {
               <Form.Label>Date of Birth</Form.Label>
               <Form.Control
                 type="date"
-                value={newBirthday ? new Date(newBirthday).toISOString().split('T')[0] : ''}
+                value={
+                  newBirthday
+                    ? new Date(newBirthday).toISOString().split("T")[0]
+                    : ""
+                }
                 onChange={(e) => setNewBirthday(e.target.value)}
               />
             </Form.Group>
@@ -125,13 +140,10 @@ export const ProfileView = ({ user, onLoggedOut, movies }) => {
               <Button variant="primary" onClick={handleUpdate}>
                 Update Profile
               </Button>
-              <Button variant="danger" onClick={handleDeregister} className="ml-2">
-                Deregister
-              </Button>
             </div>
           </Form>
         </Col>
-        <Col md={6}>
+        <Col md={6} className="favorite-movies-section">
           <h3>Favorite Movies</h3>
           {favoriteMovies.length === 0 ? (
             <p>No favorite movies selected.</p>
@@ -154,13 +166,26 @@ export const ProfileView = ({ user, onLoggedOut, movies }) => {
                         </Button>
                       </>
                     ) : (
-                      'Movie not found'
+                      "Movie not found"
                     )}
                   </li>
                 );
               })}
             </ul>
           )}
+        </Col>
+      </Row>
+      <Row className="justify-content-center">
+        <Col md={6} className="deregister-section">
+          {/* Deregister section */}
+          <h3>Deregister Account</h3>
+          <p>
+            Are you sure you want to deregister your account? This action is
+            irreversible.
+          </p>
+          <Button variant="danger" onClick={handleDeregister}>
+            Deregister
+          </Button>
         </Col>
       </Row>
     </Container>

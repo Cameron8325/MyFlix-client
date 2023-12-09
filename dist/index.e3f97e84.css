@@ -66125,4 +66125,59 @@ textarea.form-control-lg {
   }
 }
 
+.favorite-movies-section {
+  background-color: #fff;
+  border: 4px solid #a9d6e5;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.favorite-movies-section ul {
+  list-style-type: none;
+}
+
+.favorite-movies-section ul li {
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.favorite-movies-section ul li a {
+  flex-grow: 1;
+  text-decoration: none;
+}
+
+.favorite-movies-section ul li button {
+  color: #fff;
+  cursor: pointer;
+  background-color: #dc3545;
+  border: none;
+  padding: 5px 10px;
+}
+
+.deregister-section {
+  text-align: center;
+  background-color: #fff;
+  border: 4px solid #a9d6e5;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.deregister-section p {
+  margin-bottom: 20px;
+}
+
+.deregister-section button {
+  color: #fff;
+  cursor: pointer;
+  background-color: #dc3545;
+  border: none;
+  padding: 10px 20px;
+}
+
 /*# sourceMappingURL=index.e3f97e84.css.map */
