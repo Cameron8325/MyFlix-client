@@ -44,6 +44,12 @@ export const MainView = () => {
 
   const onFavoriteClick = (movieId) => {
     const movie = movies.find((m) => m._id === movieId);
+
+      // Check if the movie is already in the user's favorites
+  if (user.FavoriteMovies.includes(movieId)) {
+    window.alert(`${movie.Title} is already in your favorites!`);
+    return;
+  }
     fetch(
       `https://camflixcf-73cf2f8e0ca3.herokuapp.com/users/${user.Username}/movies/${movieId}`,
       {
