@@ -41589,6 +41589,7 @@ const MovieView = ({ movies, onFavoriteClick })=>{
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
+                        className: "favorite-button",
                         variant: "danger",
                         onClick: ()=>onFavoriteClick(movie._id),
                         children: "\u2665 Favorite"

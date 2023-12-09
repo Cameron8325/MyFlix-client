@@ -44,7 +44,7 @@ export const MovieView = ({ movies, onFavoriteClick }) => {
             Back
           </Button>
         </Link>
-        <Button variant="danger" onClick={() => onFavoriteClick(movie._id)}>
+        <Button className="favorite-button" variant="danger" onClick={() => onFavoriteClick(movie._id)}>
           &#x2665; Favorite
         </Button>
       </Card.Body>

@@ -52904,6 +52904,11 @@ textarea.form-control-lg {
   box-shadow: 0 0 10px #0000001a;
 }
 
+.movie-view.card .favorite-button {
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
 .movie-view.card .back-button {
   color: #fff;
   background-color: #1e90ff;
