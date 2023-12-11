@@ -25,7 +25,7 @@ The MyFlix client-side application is a React-based web application that allows 
 
 ## Author
 
-Micahel Cameron Smith
+Michael Cameron Smith
 
 ---
 
