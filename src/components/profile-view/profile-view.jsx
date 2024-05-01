@@ -98,7 +98,7 @@ export const ProfileView = ({ user, onLoggedOut, movies }) => {
       </Row>
       <Row>
         <Col md={6}>
-          <Form>
+          <Form className="mb-5">
             <Form.Group controlId="formUsername">
               <Form.Label>Username</Form.Label>
               <Form.Control
@@ -143,7 +143,7 @@ export const ProfileView = ({ user, onLoggedOut, movies }) => {
             </div>
           </Form>
         </Col>
-        <Col md={6} className="favorite-movies-section">
+        <Col md={6} className="favorite-movies-section mb-5">
           <h3>Favorite Movies</h3>
           {favoriteMovies.length === 0 ? (
             <p>No favorite movies selected.</p>

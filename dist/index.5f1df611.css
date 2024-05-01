@@ -39663,13 +39663,13 @@ textarea.form-control-lg {
 }
 
 .login-form .submit-button {
-  background-color: #fff2f6;
-  border-color: #fff2f6;
+  background-color: #dc3545;
+  border-color: #dc3545;
 }
 
 .login-form .submit-button:hover {
-  background-color: #ffbfd3;
-  border-color: #ffbfd3;
+  background-color: #bd2130;
+  border-color: #bd2130;
 }
 
 .login-header {
@@ -52902,13 +52902,13 @@ form .form-group .form-control {
 }
 
 form .submit-button {
-  background-color: #fff2f6;
-  border-color: #fff2f6;
+  background-color: #dc3545;
+  border-color: #dc3545;
 }
 
 form .submit-button:hover {
-  background-color: #ffbfd3;
-  border-color: #ffbfd3;
+  background-color: #bd2130;
+  border-color: #bd2130;
 }
 
 .signup-header {
